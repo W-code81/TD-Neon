@@ -10,7 +10,7 @@ let day = date.getDate();
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(process.env.MONGO_LOCAL_URI)
+  .connect(process.env.MONGO_ATLAS_URI)
   .then(() => console.log("successfully connected to MongoDB Atlas"))
   .catch((err) => console.log("MongoDB connection error: ", err));
 
