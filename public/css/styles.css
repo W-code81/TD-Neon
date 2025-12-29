@@ -5,30 +5,36 @@ html, body {
   background: #0B0B0D;
   font-family: 'Inter', sans-serif;
   color: white;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /* --- HEADER --- */
 .header {
   text-align: center;
-  padding: 40px 0;
+  padding: 30px 20px;
 }
 
 .header h1 {
-  font-size: 32px;
+  font-size: clamp(24px, 8vw, 32px);
   font-weight: 700;
   color: #A66BFF;
   letter-spacing: 1px;
+  margin: 0;
 }
 
 /* --- CONTAINER (GLASS CARD) --- */
 .container {
-  width: 420px;
+  width: min(90vw, 420px);
   margin: 0 auto;
   margin-top: 20px;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   border-radius: 18px;
-  padding: 20px 25px;
+  padding: clamp(16px, 4vw, 25px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
@@ -73,10 +79,11 @@ html, body {
 
 .todo-item p {
   margin: 0;
-  font-size: 18px;
+  font-size: clamp(14px, 4vw, 18px);
   font-weight: 300;
   color: #D7D7D7;
   transition: 0.2s;
+  word-break: break-word;
 }
 
 .todo-item input:checked + label p {
@@ -88,16 +95,19 @@ html, body {
 /* --- ADD FORM --- */
 .add-form {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 20px;
 }
 
 .add-form input {
   flex: 1;
+  min-width: 200px;
   background: rgba(255, 255, 255, 0.08);
   border: none;
   outline: none;
-  padding: 14px 18px;
-  font-size: 16px;
+  padding: clamp(12px, 3vw, 14px) clamp(14px, 3vw, 18px);
+  font-size: clamp(14px, 3vw, 16px);
   border-radius: 12px;
   color: white;
 }
@@ -108,17 +118,17 @@ html, body {
 
 /* --- ADD BUTTON --- */
 .add-btn {
-  width: 50px;
-  height: 50px;
-  margin-left: 10px;
+  width: clamp(44px, 10vw, 50px);
+  height: clamp(44px, 10vw, 50px);
   border-radius: 14px;
   border: none;
   background: #A66BFF;
   color: white;
-  font-size: 26px;
+  font-size: clamp(20px, 5vw, 26px);
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
+  flex-shrink: 0;
 }
 
 .add-btn:hover {
@@ -129,4 +139,44 @@ html, body {
 .w-code{
   color: #A66BFF;
   cursor: pointer;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+  .container {
+    width: 90%;
+    max-width: 500px;
+  }
+}
+
+/* Small phones (less than 480px) */
+@media (max-width: 479px) {
+  .header {
+    padding: 20px 15px;
+  }
+  
+  .container {
+    width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 14px 16px;
+  }
+  
+  .todo-item {
+    margin-bottom: 14px;
+  }
+  
+  .add-form input {
+    min-width: 150px;
+    font-size: 14px;
+  }
+}
+
+/* Large screens (1024px and up) */
+@media (min-width: 1024px) {
+  .container {
+    width: 450px;
+  }
 }
